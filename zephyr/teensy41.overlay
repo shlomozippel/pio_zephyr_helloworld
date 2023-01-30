@@ -1,0 +1,37 @@
+
+
+/ {
+    pins {
+      compatible = "gpio-leds";
+      D0: D0 { gpios = <&gpio1 3 0>; };
+      D1: D1 { gpios = <&gpio1 2 0>; };
+      D2: D2 { gpios = <&gpio4 4 0>; };
+      D3: D3 { gpios = <&gpio4 5 0>; };
+      
+      D7: D7 { gpios = <&gpio2 17 0>; };
+      D8: D8 { gpios = <&gpio2 16 0>; };
+      D9: D9 { gpios = <&gpio2 11 0>; };
+      D10: D10 { gpios = <&gpio2 0 0>; };
+      
+      D13: D13 { gpios = <&gpio2 3 0>; };
+    };
+
+    aliases {
+      led0 = &D2;
+      led1 = &D3;
+      led2 = &D7;
+      led3 = &D8;
+    };
+
+    chosen {
+      zephyr,shell-uart = &cdc_acm_uart0;
+    };
+};
+
+
+&zephyr_udc0 {
+  cdc_acm_uart0: cdc_acm_uart0 {
+    compatible = "zephyr,cdc-acm-uart";
+    label = "CDC_ACM_0";
+  };
+};
